@@ -11,15 +11,15 @@ async def on_issue_opened(
         assignee=None, changes=None,
 ):
     """Whenever an issue is opened, greet the author and say thanks."""
-	github_api = RUNTIME_CONTEXT.app_installation_client
-	comments_api_url = issue["comments_url"]
-	author = issue["user"]["login"]
+    github_api = RUNTIME_CONTEXT.app_installation_client
+    comments_api_url = issue["comments_url"]
+    author = issue["user"]["login"]
 
-	message = (
-	 f"Thanks for the report @{author}! "
-	 "I will look into it ASAP! (I'm a bot 🤖)."
-	)
-	await github_api.post(comments_api_url, data={"body": message}
+    message = (
+     f"Thanks for the report @{author}! "
+     "I will look into it ASAP! (I'm a bot 🤖)."
+    )
+    await github_api.post(comments_api_url, data={"body": message}
 
 if __name__ == "__main__":
     run_app(
